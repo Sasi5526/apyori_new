@@ -62,21 +62,18 @@ def inspect(results):
 
 
 
-resultsinDataFrame = pd.DataFrame(inspect(results), columns = ['In Cart', 'Recommendation', 
+resultsinDataFrame = pd.DataFrame(inspect(results), columns = ['product_name', 'Recommendation', 
                                                                 'Support', 'Confidence', 'Lift'])
 resultsinDataFrame.sort_values(by='Lift', ascending=False)
-
-
-result = resultsinDataFrame[~resultsinDataFrame['In Cart'].str.contains('electronics.video.tv', regex=False)].sort_values('Lift', ascending=False)[['Recommendation']].head(10)
 
 all_titles = [df2['product_name'][i] for i in range(len(df2['product_name']))]
 
 
 def get_recommendations(title):
     
-    data = [title]
+    data = (title)
     
-    return_df = resultsinDataFrame[~resultsinDataFrame['In Cart'].str.contains(data, regex=False)].sort_values('Lift', ascending=False)[['Recommendation']]
+    return_df = resultsinDataFrame[~resultsinDataFrame['product_name'].str.contains(data, regex=False)].sort_values('Lift', ascending=False)[['Recommendation']]
 
     return return_df
 
