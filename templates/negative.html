@@ -291,7 +291,7 @@
                             <li>Misspelled input. (Check Suggestions below)</li>
                             <li>The product name do not exists in the database.</li>
                         </ol>
-                        <input type="hidden" value="{{ name }}" id="category_code" oninput="checkSimilarity()" readonly/>
+                        <input type="hidden" value="{{ name }}" id="product_name" oninput="checkSimilarity()" readonly/>
                         <hr>
                         <p>Did you mean?</p>
                         <span id="suggestions"></span>
@@ -311,7 +311,7 @@ function goBack() {
         
 function checkSimilarity(){
     filtered_names = []
-    var str1 = document.getElementById("category_code").value;
+    var str1 = document.getElementById("product_name").value;
     for(var i=0;i<all_titles.length;i++){
         var str2 = all_titles[i];
         var score = similarity(str1, str2);
